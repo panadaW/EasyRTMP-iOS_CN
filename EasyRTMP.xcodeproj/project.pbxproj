@@ -61,11 +61,11 @@
 		DF529BC424C4324F00480832 /* NLVTBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DF529BBB24C4324E00480832 /* NLVTBaseRequest.m */; };
 		DF529BCA24C4326C00480832 /* NLVTUserArchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = DF529BC724C4326A00480832 /* NLVTUserArchiver.m */; };
 		DF529BCB24C4326C00480832 /* NLVTUserAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = DF529BC924C4326C00480832 /* NLVTUserAccount.m */; };
-		DF55D8942514E42400CCEC45 /* libEasyRTMP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF55D8932514E42400CCEC45 /* libEasyRTMP.a */; };
 		DF55D8A22516FEF200CCEC45 /* H264HWEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = DF55D8A12516FEF200CCEC45 /* H264HWEncoder.m */; };
 		DF66580A24D06A3800286CCC /* icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DF66580724D06A3700286CCC /* icon-40@2x.png */; };
 		DF66580B24D06A3800286CCC /* icon-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DF66580824D06A3700286CCC /* icon-40@3x.png */; };
 		DF66580C24D06A3800286CCC /* icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = DF66580924D06A3800286CCC /* icon-40.png */; };
+		DFA381952531DE76005603A8 /* libEasyRTMP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA381942531DE76005603A8 /* libEasyRTMP.a */; };
 		F6C510351D858306001EB536 /* PushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C510341D858306001EB536 /* PushViewController.m */; };
 		F6C5103A1D858306001EB536 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6C510391D858306001EB536 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -442,11 +442,11 @@
 		DF529BC924C4326C00480832 /* NLVTUserAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLVTUserAccount.m; sourceTree = "<group>"; };
 		DF55D8912514E42200CCEC45 /* EasyRTMPAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyRTMPAPI.h; sourceTree = "<group>"; };
 		DF55D8922514E42300CCEC45 /* EasyTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyTypes.h; sourceTree = "<group>"; };
-		DF55D8932514E42400CCEC45 /* libEasyRTMP.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEasyRTMP.a; sourceTree = "<group>"; };
 		DF55D8A12516FEF200CCEC45 /* H264HWEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = H264HWEncoder.m; sourceTree = "<group>"; };
 		DF66580724D06A3700286CCC /* icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-40@2x.png"; sourceTree = "<group>"; };
 		DF66580824D06A3700286CCC /* icon-40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-40@3x.png"; sourceTree = "<group>"; };
 		DF66580924D06A3800286CCC /* icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-40.png"; sourceTree = "<group>"; };
+		DFA381942531DE76005603A8 /* libEasyRTMP.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEasyRTMP.a; sourceTree = "<group>"; };
 		F6C5102A1D858306001EB536 /* 糖果传奇.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "糖果传奇.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6C510331D858306001EB536 /* PushViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PushViewController.h; sourceTree = "<group>"; };
 		F6C510341D858306001EB536 /* PushViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PushViewController.m; sourceTree = "<group>"; };
@@ -472,7 +472,7 @@
 				6635787D22C609710075E217 /* libavcodec.a in Frameworks */,
 				6635788122C609710075E217 /* libswresample.a in Frameworks */,
 				A1DBC63E1E8BA95A001E25E8 /* SystemConfiguration.framework in Frameworks */,
-				DF55D8942514E42400CCEC45 /* libEasyRTMP.a in Frameworks */,
+				DFA381952531DE76005603A8 /* libEasyRTMP.a in Frameworks */,
 				A1DBC6551E8BDFE0001E25E8 /* Foundation.framework in Frameworks */,
 				A1DBC63C1E8BA94A001E25E8 /* VideoToolbox.framework in Frameworks */,
 				A1DBC63A1E8BA93C001E25E8 /* AudioToolbox.framework in Frameworks */,
@@ -566,7 +566,7 @@
 			children = (
 				DF55D8912514E42200CCEC45 /* EasyRTMPAPI.h */,
 				DF55D8922514E42300CCEC45 /* EasyTypes.h */,
-				DF55D8932514E42400CCEC45 /* libEasyRTMP.a */,
+				DFA381942531DE76005603A8 /* libEasyRTMP.a */,
 			);
 			path = EasyRTMPLib;
 			sourceTree = "<group>";
