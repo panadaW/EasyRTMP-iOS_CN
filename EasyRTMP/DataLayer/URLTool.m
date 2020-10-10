@@ -7,11 +7,12 @@
 //
 
 #import "URLTool.h"
+#import "X264Encoder.h"
 
 static NSString *ConfigUrlKey = @"ConfigUrl";
 static NSString *ResolitionKey = @"resolition";
 static NSString *OnlyAudioKey = @"OnlyAudioKey";
-static NSString *X264Encoder = @"X264Encoder";
+static NSString *X264Encoder1 = @"X264Encoder1";
 static NSString *activeDay = @"activeDay";
 
 static NSString *ExtensionSuiteName = @"group.com.rtmp";
@@ -31,18 +32,12 @@ static NSString *ExtensionSuiteName = @"group.com.rtmp";
 + (NSString *) gainURL {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *url = [defaults objectForKey:ConfigUrlKey];
-    
     // 设置默认url
-//    if (!url || [url containsString:@"rtmp://demo.easydss.com/live"] || [url containsString:@"121.40.50.44/live"]) {
-    if (!url || [url isEqualToString:@""] || [url containsString:@"www.easydss"]) {
-        NSMutableString *randomNum = [[NSMutableString alloc] initWithString:@"rtmp://demo.easydss.com:10085/hls/stream_"];
-        for (int i = 0; i < 6; i++) {
-            int num = arc4random() % 10;
-            [randomNum appendString:[NSString stringWithFormat:@"%d",num]];
-        }
-        [self saveURL:randomNum];
+    if (!url || [url isEqualToString:@""] || [url containsString:@"www.easydss"] || [url containsString:@"cloud.easydarwin"]) {
+        //rtmp://172.31.79.45:10085/hls/W01?sign=HGsl4uzGR
+        url = @"rtmp://live-push.bilivideo.com/live-bvc/?streamname=live_396731842_81355915&key=2a1cf08b6ec73a01a16c9fa9d8feed10";
     }
-    
+
     return url;
 }
 
@@ -60,7 +55,7 @@ static NSString *ExtensionSuiteName = @"group.com.rtmp";
     
     // 设置默认分辨率
     if (!resolition || [resolition isEqualToString:@""]) {
-        [self saveResolition:@"480*640"];
+        [self saveResolition:@"720*1280"];
     }
     
     return resolition;
@@ -83,13 +78,19 @@ static NSString *ExtensionSuiteName = @"group.com.rtmp";
 
 + (void) saveX264Enxoder:(BOOL) value {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setBool:value forKey:X264Encoder];
+    [defaults setBool:value forKey:X264Encoder1];
     [defaults synchronize];
 }
 
 + (BOOL) gainX264Enxoder {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    return [defaults boolForKey:X264Encoder];
+    return [defaults boolForKey:X264Encoder1];
+}
+
++ (CGFloat) getX264EnxoderRate {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    X264Encoder *encode = [defaults objectForKey:X264Encoder1];
+    return encode.frameRate;
 }
 
 #pragma mark - key有效期

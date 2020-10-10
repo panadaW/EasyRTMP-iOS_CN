@@ -20,4 +20,6 @@
 
 @property (nonatomic, weak) id<EasyResolutionDelegate> delegate;
 
+///实收横屏
+@property (nonatomic) BOOL isHorizontal;
 @end

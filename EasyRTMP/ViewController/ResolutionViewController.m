@@ -37,11 +37,17 @@
     [self.view addSubview:self.tableView];
     
     EasyViewBorderRadius(self.tableView, 5.0, 0, [UIColor clearColor]);
+    
+    if (self.isHorizontal) {
+        self.tableView.transform = CGAffineTransformMakeRotation(M_PI_2);
+    }else{
+        self.tableView.transform = CGAffineTransformIdentity;
+    }
 }
 
 - (NSArray *)resolutionArray{
     if (!_resolutionArray) {
-        _resolutionArray = @[@"288*352",@"480*640",@"720*1280",@"1080*1920"];
+        _resolutionArray = @[@"480*640",@"720*1280",@"1080*1920"];
     }
     
     return _resolutionArray;

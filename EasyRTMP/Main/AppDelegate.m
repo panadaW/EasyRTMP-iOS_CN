@@ -11,7 +11,8 @@
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import <Bugly/Bugly.h>
 #import "PushViewController.h"
-
+#import "NLVTPostRequest.h"
+#import "NLVTUserArchiver.h"
 @interface AppDelegate ()
 
 @end
@@ -23,7 +24,7 @@
     
     // Bugly
     [Bugly startWithAppId:@"aac2c8fa86"];
-
+    [self keyRequest];
     // IQKeyboardManager
     IQKeyboardManager *keyboardManager = [IQKeyboardManager sharedManager]; // 获取类库的单例变量
     keyboardManager.enable = YES; // 控制整个功能是否启用
@@ -53,6 +54,30 @@
     NSLog(@"进程名：%@", pname);
     
     return YES;
+}
+
+//请求key
+- (void)keyRequest {
+    NSMutableDictionary *header = [NSMutableDictionary dictionary];
+    [header setObject:@"SJJK_IOS_CN" forKey:@"softwareId"];
+    [header setObject:@"mb" forKey:@"softwareType"];
+    NLVTRequestParam *param = [NLVTRequestParam paramWithDictionary:header];
+    [NLVTPostRequest appKeyRequestWithParam:param requestProgress:^(NSProgress * _Nonnull progress) {
+        
+    } requestFinish:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        NSString *Result = responseObject[@"Result"];
+        if ([Result isEqualToString:@"ok"]) {
+            NSArray *dicArray = responseObject[@"Model"];
+            if (dicArray.count > 0) {
+                NSDictionary *dic = dicArray[0];
+                NSString *softDescription = dic[@"softDescription"];
+                [[NLVTUserArchiver shareInstance] saveKey:softDescription];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"saveKeySucess" object:nil];
+            }
+        }
+    } requestFailed:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
+        
+    }];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

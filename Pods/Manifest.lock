@@ -1,7 +1,23 @@
 PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
   - Bugly (2.5.0)
   - IQKeyboardManager (6.0.4)
   - Masonry (1.1.0)
+  - MJExtension (3.2.2)
   - ReactiveCocoa (2.5.2):
     - ReactiveCocoa/UI (= 2.5.2)
   - ReactiveCocoa/Core (2.5.2):
@@ -15,18 +31,22 @@ PODS:
   - WHToast (0.0.2)
 
 DEPENDENCIES:
+  - AFNetworking (~> 3.0)
   - Bugly
   - IQKeyboardManager
   - Masonry
+  - MJExtension
   - ReactiveCocoa (from `https://github.com/zhao0/ReactiveCocoa.git`, tag `2.5.2`)
   - RTRootNavigationController
   - WHToast
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
+    - AFNetworking
     - Bugly
     - IQKeyboardManager
     - Masonry
+    - MJExtension
     - RTRootNavigationController
     - WHToast
 
@@ -41,13 +61,15 @@ CHECKOUT OPTIONS:
     :tag: 2.5.2
 
 SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   IQKeyboardManager: 29514134ef0334a6fa33cf4eee11c36c064baeaf
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJExtension: d9b9c74cbdeb724c1e9ecbb157b318276e62e876
   ReactiveCocoa: 3ff25b1bd992ac79c5c79b26b6c0c1713b715bb2
   RTRootNavigationController: d6aa6cbb78a3eaecea4f6e4df63f15dd887836b8
   WHToast: b5b1c6c2a178b2e848e7416fd25ca6b25c7babf8
 
-PODFILE CHECKSUM: f2e731fd1201327cf0c2320d797984d9c1186846
+PODFILE CHECKSUM: 40fb3ca2b9567c1fe6bc39078bcc80ab11586868
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.8.3

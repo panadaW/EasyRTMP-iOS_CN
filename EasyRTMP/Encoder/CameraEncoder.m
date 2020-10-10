@@ -14,6 +14,7 @@
 #import "AVAssetWriteManager.h"
 #import "FolderUtil.h"
 #import "URLTool.h"
+#import "NLVTUserArchiver.h"
 
 static CameraEncoder *selfClass = nil;
 
@@ -104,15 +105,17 @@ static CameraEncoder *selfClass = nil;
 
 - (int) activate {
     // 激活授权码
-    int res = EasyRTMP_Activate("79736C3665662B32734B794132594E656F58776D4A66644659584E35556C524E554B3558444661672F3658695257467A65555268636E6470626C526C5957314A6331526F5A554A6C6333516A4D6A41784F546C6C59584E35");
+    NSString *key = [[NLVTUserArchiver shareInstance] readUserAKey];
+    const char * a =[key UTF8String];
+    int res = EasyRTMP_Activate(a);
     NSLog(@"key剩余时间：%d", res);
     
     if (res > 0) {
         if (_delegate) {
-            [_delegate getConnectStatus:@"激活成功" isFist:1];
+            [_delegate getConnectStatus:@"" isFist:1];
         }
     } else {
-        [_delegate getConnectStatus:@"激活失败" isFist:1];
+        [_delegate getConnectStatus:@"" isFist:1];
     }
     
     return res;
@@ -450,7 +453,7 @@ static CameraEncoder *selfClass = nil;
     if (self.onlyAudio) {
         mediainfo.u32VideoFps = ~0; //~0只传音频
     } else {
-        mediainfo.u32VideoFps = 20;
+        mediainfo.u32VideoFps = 60;
     }
     
     mediainfo.u32AudioCodec = EASY_SDK_AUDIO_CODEC_AAC;// SDK output Audio PCMA
@@ -469,6 +472,8 @@ static CameraEncoder *selfClass = nil;
         return;
     }
     
+//    handle = EasyRTMP_Create();
+//    EasyRTMP_SetCallback(handle, easyPusher_Callback, "123");
     self.running = NO;
     [self.h264Encoder invalidate];
     
@@ -564,7 +569,7 @@ int easyPusher_Callback(int _id, char *pBuf, EASY_RTMP_STATE_T _state, void *_us
         NSArray *s = [resolution componentsSeparatedByString:@"*"];
         CGSize size = CGSizeMake([s[0] floatValue], [s[1] floatValue]);
 
-        self.x264Encoder = [[X264Encoder alloc] initX264Encoder:size frameRate:30 maxKeyframeInterval:25 bitrate:1024*1000 profileLevel:@""];
+        self.x264Encoder = [[X264Encoder alloc] initX264Encoder:size frameRate:60 maxKeyframeInterval:25 bitrate:1024*100 profileLevel:@""];
 
         self.x264Encoder.delegate = self;
     });

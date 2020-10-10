@@ -28,7 +28,7 @@
     
     self.navigationItem.title = @"关于";
     
-    NSString *name = @"EasyRTMP iOS 推流器";
+    NSString *name = @"SjjkRtmp iOS 推流器";
     NSString *content;
     UIColor *color;
     
@@ -56,7 +56,7 @@
     self.nameLabel.numberOfLines = 0;
     
 //    NSString *html = @"EasyRTMP是<a href='http://open.tsingsee.com'>TSINGSEE青犀开放平台</a>开发的一个RTMP流媒体音/视频直播推送产品组件，全平台支持(包括Windows/Linux(32 & 64)，ARM各平台，Android、iOS)，通过EasyRTMP我们就可以避免接触到稍显复杂的RTMP/FLV打包推送流程，只需要调用EasyRTMP的几个API接口，就能轻松、稳定地把流媒体音视频数据推送给RTMP流媒体服务器进行转发和分发，尤其是与<a href='http://www.easydss.com'>EasyDSS流媒体服务器</a>、<a href='https://github.com/EasyDSS/EasyPlayer-RTMP'>EasyPlayer-RTMP播放器</a>、<a href='https://github.com/EasyDSS/EasyPlayerPro'>EasyPlayerPro播放器</a>可以无缝衔接，EasyRTMP从16年开始发展和迭代，经过长时间的企业用户和项目检验，稳定性非常高;";
-    NSString *html = @"EasyRTMP是 TSINGSEE青犀开放平台 开发的一个RTMP流媒体音/视频直播推送产品组件，全平台支持(包括Windows/Linux(32 & 64)，ARM各平台，Android、iOS)，通过EasyRTMP我们就可以避免接触到稍显复杂的RTMP/FLV打包推送流程，只需要调用EasyRTMP的几个API接口，就能轻松、稳定地把流媒体音视频数据推送给RTMP流媒体服务器进行转发和分发，尤其是与EasyDSS流媒体服务器、EasyPlayer-RTMP播放器、EasyPlayerPro播放器可以无缝衔接，EasyRTMP从16年开始发展和迭代，经过长时间的企业用户和项目检验，稳定性非常高。";
+    NSString *html = @"SjjkRtmp是 TSINGSEE青犀开放平台 开发的一个RTMP流媒体音/视频直播推送产品组件，全平台支持(包括Windows/Linux(32 & 64)，ARM各平台，Android、iOS)，通过SjjkRtmp我们就可以避免接触到稍显复杂的RTMP/FLV打包推送流程，只需要调用SjjkRtmp的几个API接口，就能轻松、稳定地把流媒体音视频数据推送给RTMP流媒体服务器进行转发和分发，尤其是与EasyDSS流媒体服务器、SjjkRtmp-RTMP播放器、EasyPlayerPro播放器可以无缝衔接，SjjkRtmp从16年开始发展和迭代，经过长时间的企业用户和项目检验，稳定性非常高。";
     NSData *data = [html dataUsingEncoding:NSUnicodeStringEncoding];
     
     NSDictionary *options = @{ NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType,

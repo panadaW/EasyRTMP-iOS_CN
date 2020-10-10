@@ -11,6 +11,7 @@
 //#import "RecordViewController.h"
 #import "VideoViewController.h"
 #import "URLTool.h"
+#import "NLVTUserArchiver.h"
 
 @interface SettingViewController ()<UITextFieldDelegate>
 
@@ -22,6 +23,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *audioBtn;
 @property (weak, nonatomic) IBOutlet UIButton *recordBtn;
 @property (weak, nonatomic) IBOutlet UIButton *saveBtn;
+//注册码
+@property (weak, nonatomic) IBOutlet UITextField *codeTextField;
+//服务器IP
+@property (weak, nonatomic) IBOutlet UITextField *ipTextField;
+//端口
+@property (weak, nonatomic) IBOutlet UITextField *portTextField;
+//直播标识
+@property (weak, nonatomic) IBOutlet UITextField *signTextField;
 
 @end
 
@@ -48,6 +57,11 @@
     [self.markBtn setImage:[UIImage imageNamed:@"set_selected"] forState:UIControlStateSelected];
     [self.audioBtn setImage:[UIImage imageNamed:@"set_select"] forState:UIControlStateNormal];
     [self.audioBtn setImage:[UIImage imageNamed:@"set_selected"] forState:UIControlStateSelected];
+    NLVTUserAccount *account = [[NLVTUserArchiver shareInstance] readUserAccount];
+    self.codeTextField.text = account.regisCode;
+    self.signTextField.text = account.signId;
+    self.ipTextField.text = account.ip;
+    self.portTextField.text = account.port;
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -108,7 +122,14 @@
 
 // 保存
 - (IBAction)save:(id)sender {
-    [URLTool saveURL:self.textView.text];
+//    [URLTool saveURL:self.textView.text];
+    NLVTUserAccount *account = [[NLVTUserArchiver shareInstance] readUserAccount];
+    account.regisCode = self.codeTextField.text;
+    account.signId = self.signTextField.text;
+    account.ip = self.ipTextField.text;
+    account.port = self.portTextField.text;
+    [[NLVTUserArchiver shareInstance] saveUserAccount:account];
+    [URLTool saveURL:[NSString stringWithFormat:@"rtmp://%@:%@/hls/%@?sign=%@",self.ipTextField.text,self.portTextField.text,self.codeTextField.text,self.signTextField.text]];
     
     if (self.audioBtn.selected) {
         [URLTool saveOnlyAudio:YES];

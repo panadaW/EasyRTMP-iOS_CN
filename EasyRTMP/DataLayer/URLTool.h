@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @interface URLTool : NSObject
 
 // 推流地址

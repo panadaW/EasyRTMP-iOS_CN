@@ -62,10 +62,11 @@ void didCompressH264(void *outputCallbackRefCon, void *sourceFrameRefCon, OSStat
                                                  (__bridge void *)(self),
                                                  &session);
     if (status == noErr) {
-        int fps = 20;
+        int fps = 60;
         
         // 设置码率
-        int bt = (int)(size.width * size.height * 20 * 2 * 0.04f);
+//        int bt = (int)(size.width * size.height * 20 * 2 * 0.1f);
+        int bt = (int)(size.width * size.height * 20 * 2 * 2);
         if (size.width >= 1920 || size.height >= 1920) {
             bt *= 0.3;
         } else if (size.width >= 1280 || size.height >= 1280) {
@@ -73,17 +74,17 @@ void didCompressH264(void *outputCallbackRefCon, void *sourceFrameRefCon, OSStat
         } else if (size.width >= 720 || size.height >= 720) {
             bt *= 0.6;
         }
-        
+        bt = 10000000;
         // 设置编码码率(比特率)，如果不设置，默认将会以很低的码率编码，导致编码出来的视频很模糊
         status  = VTSessionSetProperty(session,
                                        kVTCompressionPropertyKey_AverageBitRate,
                                        (__bridge CFTypeRef)@(bt)); // bps
         status += VTSessionSetProperty(session,
                                        kVTCompressionPropertyKey_DataRateLimits,
-                                       (__bridge CFArrayRef)@[@(bt * 2 / 8), @1]); // Bps
+                                       (__bridge CFArrayRef)@[@(bt/2), @1]); // Bps
         NSLog(@"set bitrate return: %d", (int)status);
         
-        const int32_t v = fps * 2; // 2-second kfi
+        const int32_t v = fps * 1; // 2-second kfi
         CFNumberRef ref = CFNumberCreate(NULL, kCFNumberSInt32Type, &v);
         VTSessionSetProperty(session,
                              kVTCompressionPropertyKey_MaxKeyFrameInterval,

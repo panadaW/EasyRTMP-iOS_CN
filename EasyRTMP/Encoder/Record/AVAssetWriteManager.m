@@ -194,8 +194,8 @@
     
     // 码率和帧率设置
     NSDictionary *compressionProperties = @{ AVVideoAverageBitRateKey : @(bitsPerSecond),
-                                             AVVideoExpectedSourceFrameRateKey : @(30),
-                                             AVVideoMaxKeyFrameIntervalKey : @(30),
+                                             AVVideoExpectedSourceFrameRateKey : @(60),
+                                             AVVideoMaxKeyFrameIntervalKey : @(60),
                                              AVVideoProfileLevelKey : AVVideoProfileLevelH264BaselineAutoLevel };
     
     // 视频属性
